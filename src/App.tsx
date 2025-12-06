@@ -1,8 +1,7 @@
-
 import './App.css';
 import { useState } from 'react';
-import Item from './components/Item/Item.tsx';
-import Order from './components/Order/Order.tsx';
+import MainBlockRight from './components/MainBlockRight/MainBlockRight.tsx';
+import MainBlockLeft from './components/MainBlockLeft/MainBlockLeft.tsx';
 
 export const App = () => {
 	const [orders, setOrders] = useState([
@@ -51,40 +50,9 @@ export const App = () => {
 	return (
 		<>
 			<div className='App'>
-				<div className='main-block-right'>
-					<span>Add items:</span>
-					<div className='items-container'>
-						{orders.map((item) => (
-							<Item key={item.name} name={item.name} price={item.price} functionOnClick={() => addItem(item.name)} />
-						))}
-					</div>
-				</div>
+				<MainBlockRight functionOnClick={addItem} orders={orders} />
                 
-                
-				<div className='main-block-left'>
-					<span>Order details: </span>
-					<div className='order-price'>
-						{total === 0 
-							? <span>No items to order yet!</span>
-							: <><span>Total price: </span><span>{total}</span></>
-						}
-					</div>
-					<div className='orders-container'>
-						{orders.map((order) => {
-							if (order.count !== 0) {
-								return (
-									<Order
-										key={order.name}
-										name={order.name}
-										price={order.price}
-										count={order.count}
-										functionOnClick={() => deleteOrder(order.name)}
-									/>
-								);
-							}
-						})}
-					</div>
-				</div>
+				<MainBlockLeft functionOnClick={deleteOrder} orders={orders} total={total} />
 			</div>
 		</>
 	);
