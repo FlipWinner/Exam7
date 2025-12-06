@@ -63,6 +63,12 @@ export const App = () => {
                 
 				<div className='main-block-left'>
 					<span>Order details: </span>
+					<div className='order-price'>
+						{total === 0 
+							? <span>No items to order yet!</span>
+							: <><span>Total price: </span><span>{total}</span></>
+						}
+					</div>
 					<div className='orders-container'>
 						{orders.map((order) => {
 							if (order.count !== 0) {
@@ -77,11 +83,6 @@ export const App = () => {
 								);
 							}
 						})}
-					</div>
-                    
-					<div>
-						<span>Total price: </span>
-						<span>{total}</span>
 					</div>
 				</div>
 			</div>

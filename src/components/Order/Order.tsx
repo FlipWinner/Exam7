@@ -12,8 +12,8 @@ const Order: React.FC<Props> = ({ name, price, count, functionOnClick }) => {
 		<div className='order'>
 			<h5>{name}</h5>
 			<div className='order-info'>
-				<span>x{count}</span>
-				<span>{price * count}</span>
+				<span className='order-count'>x{count}</span>
+				<span>{price * count} KGS</span>
 			</div>
 			<button type='button' className='order-delete' onClick={() => functionOnClick(name)}>X</button>
 		</div>
